@@ -21,7 +21,7 @@ if [ -z "${PLATFORM}" ]; then
       lsb_id=$(lsb_release -is)
       lsb_re=$(lsb_release -rs | cut -f1 -d'.')
       case "${lsb_id}" in
-      RedHatEnterpriseServer|CentOS|OracleServer|EnterpriseEnterpriseServer)
+      RedHatEnterpriseServer|CentOS|OracleServer|EnterpriseEnterpriseServer|Rocky)
         PLATFORM="centos_${lsb_re}_x"
         echo "[${lsb_id} ${lsb_re} Detected]"
         ;;
@@ -37,13 +37,16 @@ if [ -z "${PLATFORM}" ]; then
     elif [ -e /etc/system-release ]; then
       etcsys_id=$(cat /etc/system-release | cut -f1 -d' ')
       etcsys_re=$(cat /etc/system-release | grep -o [0-9] | head -n 1)
-      echo "[${etcsys_id} ${etcrh_re} Detected]"
+      echo "[${etcsys_id} ${etcsys_re} Detected]"
       case "${etcsys_id}" in
         RedHatEnterpriseServer|CentOS|OracleServer|Oracle|EnterpriseEnterpriseServer)
           PLATFORM="centos_${etcsys_re}_x"
         ;;
         Amazon)
           PLATFORM="centos_7_x"
+        ;;
+        Rocky)
+          PLATFORM="rocky_${etcsys_re}_x"
         ;;
       esac
       echo "[Treated as ${PLATFORM}]"

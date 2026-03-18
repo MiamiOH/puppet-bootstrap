@@ -26,7 +26,7 @@ case "${PLATFORM}" in
 redhat_5|centos_5|centos_5_x) source "${BOOTSTRAP_HOME}/centos_5_x.sh" ;;
 redhat_6|centos_6|centos_6_x) source "${BOOTSTRAP_HOME}/centos_6_x.sh" ;;
 redhat_7|centos_7|centos_7_x) source "${BOOTSTRAP_HOME}/centos_7_x.sh" ;;
-redhat_8|centos_8|centos_8_x) source "${BOOTSTRAP_HOME}/oraclelinux_8_x.sh" ;;
+redhat_8|centos_8|centos_8_x|rocky_8_x) source "${BOOTSTRAP_HOME}/oraclelinux_8_x.sh" ;;
 debian) source "${BOOTSTRAP_HOME}/debian.sh" ;;
 ubuntu) source "${BOOTSTRAP_HOME}/ubuntu.sh" ;;
 osx|mac_os_x)
